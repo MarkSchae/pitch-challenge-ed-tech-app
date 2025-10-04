@@ -1,3 +1,31 @@
 Creating a Ed Tech web app for a pitch challenge themed connections.
 
 Connecting learners to language education through technology.
+
+
+Main 'problem' to solve 
+    Aiding foundation phase learners to learn how to read in their native language(Xhosa)
+
+Why
+    Reading is an essetial skill
+    Learners in South Africa has a learning crisis when it comes to reading and comprehension
+    Research shows that learning to read in your home language first is better 
+    There is currently a lack of tools specifically designed for learners who do not speak English as their first language 
+
+How 
+    Fun and engaging game like application that uses phonics (sounds of words) awareness
+    App creates a environment for learners to easily access phonics learning 
+
+Technologies
+    Tailwind
+    Javascript
+    Html 
+
+Initial workflow: (Function => Styling => Scalability => Maintainability => Improvements => Refactoring)
+    Landing page and navigation to next page (button)
+    Explain page - Quick and child friendly explaination of how the game works and the current level/sound/letter
+        - Include a picture of the letter as well as three repetitions of the letter sound
+    Interaction/Game page - user can push a button to listen to the sound and pick a answer
+
+Future Improvements:
+    TBC 
