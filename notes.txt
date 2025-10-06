@@ -29,3 +29,37 @@ Initial workflow: (Function => Styling => Scalability => Maintainability => Impr
 
 Future Improvements:
     TBC 
+
+Initial Landing page:
+    For now is just a button to be pressed
+    Onclick function to display the explain page elements  
+    Event listener can be on the whole element and use targetclosest to target all elements including the main 
+    SPA design 
+    Load the explain page elements 
+
+Initial Explain page:
+    Load Onclick of button on Landing page
+    Visible count-down to indicate the event
+        Div containing numbers
+        Js function to start the numbers at 3 and count backwards updating the onscreen number 
+        Once number reaches zero, load the sound and letter elements  
+    Voice (sound) playing the explaination and example of the letter sound
+        Sound playing element 
+        Sound stored internally for now 
+        No controls needed for the user, maybe a button to play again
+        Sound is of a 'teacher' basically explaining how the game works 
+    Visible letter (current letter)
+        Nice animated appreance of the current level letter whilst the 'teacher' explains the game 
+        Count-down function to count down to the loading of the game elements (helper function)
+        Display the game elements when the timer is zero 
+
+Initial Game page (loop):
+    Loaded when timer reaches zero 
+    Display the letter 
+    Button element within a div for design choices
+    Button functionality - onclick must play the sound of the letter (how to properly say the sound of the letter)
+    Load letter options on button first click
+    Each option when clicked also plays the sound again 
+    Option is highlighted onclick 
+    A submit button is highlighted when an option is clicked 
+    When submit button is clicked load a message to indicate a In/Correct answer 
