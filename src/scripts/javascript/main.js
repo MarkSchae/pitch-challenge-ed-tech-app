@@ -1,5 +1,13 @@
 // Play the sound, internally stored example sound for now
-const letterSound = new Audio('../../src/audio/placeholder.mp3'); 
+const letterSound = new Audio('../../src/audio/S.mp3'); 
+const explainSound = new Audio('../../src/audio/explain-xhosa.mp3');
+const explainSoundCont = new Audio('../../src/audio/explain-cont.mp3'); // Listen to the letter sounds carefully. Look at the letter on the screen
+// Click the letter that makes the sound (Cofa ileta eyenza isandi)
+const clickAnswer = new Audio('../../src/audio/click-answer.mp3');
+// Correct, well done! Kulungile, wenze kakuhle!
+const wellDoneSound = new Audio('../../src/audio/correct-well-done.mp3');
+// Keep trying, you are doing great! Qhubeka uzame, wenza kakuhle kakhulu!
+const keepTryingSound = new Audio('../../src/audio/keep-trying.mp3')
 
 // Onclick event listner to load the explain game elements
 const playBtn = document.getElementById('play-button');
@@ -62,19 +70,22 @@ function explainGameRender () {
     // Create the elements for the explanation
     const welcome = document.createElement('div');
     welcome.id = 'text-div-id';
-    welcome.innerText = 'Hello, please listen carefully and enjoy!';
+    welcome.innerText = 'Hello, please listen carefully and enjoy!'; // Molo, nceda mamela ngononophelo kwaye wonwabele! Mamela iingoma zeeleta ngononophelo. Jonga ileta esikrinini.
     welcome.classList.add(...letterStyles.split(' '));
     letterContainer.append(welcome);
 
-    letterSound.play();
+    explainSound.play();
 
     // Listen for the end of the audio then trigger the count down to gameloop
-    letterSound.addEventListener('ended', () => {
-        letter.innerText = '';
-        // Run the count down function after the explain sound
-        countDownTimer(welcome, gameLoop);
-    }, {once: true}); // Removes the listner after one call
-    
+    explainSound.addEventListener('ended', () => {
+        explainSoundCont.play();
+        explainSoundCont.addEventListener('ended', () => {
+            letter.innerText = '';
+            // Run the count down function after the explain sound
+            countDownTimer(welcome, gameLoop); // Reusing the welcome dom element for the timer
+        }, {once: true}); // Removes the listner after one call
+
+    }, {once: true});
     // Might add a option to play the instructions again
 }
 
@@ -94,7 +105,24 @@ function gameLoop () {
     const choose = document.getElementById('text-div-id');
     choose.classList.remove('hidden');
     choose.innerText = 'Choose the letter that makes the sound'; // Play the sound again?
-    letterSound.play();
+    clickAnswer.play();
+    clickAnswer.addEventListener('ended', () => {
+        letterSound.play();
+    });
+    const letterPlayBtn = document.createElement('button');
+    letterPlayBtn.innerText = 'Click me!';
+    const mainContainer = document.getElementById('main-container');
+    letterPlayBtn.classList.add('flex', 'w-fit', 'justify-center', 'bg-blue-700', 'p-2', 'rounded-2xl', 'hover:shadow-2xl', 'hover:cursor-pointer');
+    mainContainer.append(letterPlayBtn);
+    let soundClicks = 0;
+    letterPlayBtn.addEventListener('click', () => {
+        letterSound.play();
+        soundClicks++;
+        if(soundClicks === 3) {
+            letterSound.volume = 1.0;
+            letterSound.playbackRate = 0.3;
+        }
+    });
     // Run the function that checks for clicks/answer with the letters as a argument
     letterClick(letters);
 }
@@ -106,6 +134,7 @@ function letterClick (lettersContainer) {
         if(letter.innerText === 'S') {
             lettersContainer.innerHTML = '';
             lettersContainer.innerText = 'Correct, well done!';
-        }
+            wellDoneSound.play();
+        } else {keepTryingSound.play();}
     }));
 }

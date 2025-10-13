@@ -1,0 +1,64 @@
+3 Minutes or less talking points
+
+Problem (Collaborating with a professional lingguist in the industry)
+    > South Africa faces a serious literacy challenge.
+    > Many children struggle to read and comprehend text at the foundation phase
+        - Research suggests (cite Research) that one reason is that learners are often taught to read in a second language before learning reading and comprehension in thier home language.
+    > Research shows that children who first learn to read in their 'mother-tongue' 
+        - build stronger comprehension, confidence, and long-term learning skills.
+        - transfer these skills to other languages more easily.
+    > But there’s a gap: accessible, interactive learning tools in local languages are rare
+        - especially ones that are research/data/tech driven.
+
+Proposed solution (aiding towards a long term solution)
+
+> Providing learners with a easy to use and fun way to connect to more language education through tech.
+> It is a simple learning game that helps children 
+    - learn to recognize and connect letter sounds** 
+    - starting with IsiXhosa. (Based on current research?)
+> The app is designed to be direct to learner
+    - giving clear instructions, playing letter sounds, and guiding them through each step.
+> Positive feedback is given for correct answers
+    - encouraging gentle retries when the learner makes a mistake
+    - all designed to make focused learning feel like play.
+
+Demo: (make a youtube vid with a slideshow presentation and a live app demo)
+
+> The learner starts by pressing the play button. (improvement to UI will change this)
+> A short countdown builds excitement. (This is just a placeholder for better navigation)
+> Instructions are played explaining the game loop:
+    - Listen carefully
+    - Look at the letter on the screen
+    - Choose the letter that makes the letter sound
+    - Letter sound 
+    - After three presses of the letter sound, the play-rate is reduced
+    - Praise if the letter chose is correct
+    - Gentle encouraging if the chose is incorrect 
+
+
+Practical implications
+
+> This MVP is about connection through technology
+    - connecting learners to education in their home language, to confidence, and to opportunity.
+>
+> With expansion to other South African languages, this tool can become part of a larger mission:
+    - making foundational literacy accessible, playful, and personal.
+> Learners across the country spending just a few extra minutes a day 
+    - improving reading and comprehension skills in their own language, on any device.
+> The ultimate goal is connection and empowerment through data/research driven tech.
+Maybe the goal is actually to provide the research with an effective intervention platform?
+
+Future Improvements
+
+> Storing and analysis of data (results data for each learner). 
+> UI more entertaining.
+> More levels of the game.
+> Different types of game loops surrounding the core of the learning objectives
+> Mobile version of the app.
+> Cleaner code design.
+    - Might refactor to React.
+    - Seperation of code responsibility (modular).
+    - Documentation (maybe include the research behind the teaching choices).
+
+
+
