@@ -135,6 +135,25 @@ function letterClick (lettersContainer) {
             lettersContainer.innerHTML = '';
             lettersContainer.innerText = 'Correct, well done!';
             wellDoneSound.play();
+            const coolCatGif = document.createElement('img');
+            coolCatGif.src = '../../src/images/wink.gif';
+            lettersContainer.append(coolCatGif);
         } else {keepTryingSound.play();}
     }));
 }
+
+function letterShadow () {
+    const titles = document.querySelectorAll('.title-letters');
+    titles.forEach(title => {
+        const letterText = title.innerText
+        title.innerText = '';
+        letterText.split('').forEach(letter => {
+            const spanLetter = document.createElement('span');
+            spanLetter.innerText = letter;
+            spanLetter.classList.add('text-shadow');
+            title.append(spanLetter);
+        })
+    });
+}
+letterShadow();
+

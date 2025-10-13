@@ -12,6 +12,11 @@
     --spacing: 0.25rem;
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
+    --text-8xl: 6rem;
+    --text-8xl--line-height: 1;
+    --font-weight-extrabold: 800;
+    --tracking-tight: -0.025em;
+    --tracking-widest: 0.1em;
     --radius-2xl: 1rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
@@ -172,6 +177,9 @@
   .hidden {
     display: none;
   }
+  .h-\[50vh\] {
+    height: 50vh;
+  }
   .h-screen {
     height: 100vh;
   }
@@ -196,18 +204,49 @@
   .justify-evenly {
     justify-content: space-evenly;
   }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
   .bg-blue-700 {
     background-color: var(--color-blue-700);
   }
+  .bg-\[url\(\.\.\/\.\.\/images\/perserverance\.jpg\)\] {
+    background-image: url(../../images/perserverance.jpg);
+  }
+  .bg-cover {
+    background-size: cover;
+  }
+  .bg-center {
+    background-position: center;
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
+  }
+  .font-\[Orbitron\] {
+    font-family: Orbitron;
   }
   .text-6xl {
     font-size: var(--text-6xl);
     line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
+  .text-8xl {
+    font-size: var(--text-8xl);
+    line-height: var(--tw-leading, var(--text-8xl--line-height));
+  }
+  .font-extrabold {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
+  }
+  .tracking-tight {
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  .tracking-widest {
+    --tw-tracking: var(--tracking-widest);
+    letter-spacing: var(--tracking-widest);
   }
   .hover\:cursor-pointer {
     &:hover {
@@ -231,6 +270,18 @@
       }
     }
   }
+}
+.text-shadow {
+  color: black;
+  text-shadow: 3px 3px 8px rgba(0, 0, 60, 0.9),  -1px -1px 2px rgba(255, 200, 100, 0.8),  0 0 20px rgba(0, 0, 0, 0.9);
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-shadow {
   syntax: "*";
@@ -300,6 +351,8 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
