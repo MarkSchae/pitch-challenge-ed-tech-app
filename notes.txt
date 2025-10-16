@@ -63,3 +63,13 @@ Initial Game page (loop):
     Option is highlighted onclick 
     A submit button is highlighted when an option is clicked 
     When submit button is clicked load a message to indicate a In/Correct answer 
+
+
+
+Left to do:
+    Only dragon sprite on play page
+    Fix the option letters on game page
+    The resonse to winning must have confeite and cannons
+    The dragon must be on the left hand side or maybe only appears when choosing and appears at a certian distance so it looks like its hitting the letter 
+    Presentation and slideshow 
+    Insert the new audio

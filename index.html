@@ -6,26 +6,32 @@
     <link rel="stylesheet" href="./src/styles/stylesheets/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <script src="./src/scripts/javascript/main.js" defer type="module"></script>
     <title>Language Phonics Teacher</title>
 </head>
-<body class="bg-[url(../../images/perserverance.jpg)] bg-cover bg-center">
-    <header>
-        <div class="font-[Orbitron] text-8xl font-extrabold flex flex-col gap-3 justify-center items-center">
+<body id="body-container" class="bg-[url(../../images/space-sunrise-landing-page.png)] bg-cover bg-center bg-no-repeat flex flex-col gap-30 h-screen">
+    <header id="title-container">
+        <div class="pixelify-sans text-9xl font-extrabold flex flex-col gap-3 justify-center items-center">
             <div class="tracking-tight title-letters">LANGUAGE</div>
             <div class="title-letters">LEARNING</div>
             <div class="tracking-widest title-letters">ADVENTURE</div>
         </div>
     </header>
     <main>
-        <div id="main-container" class="flex flex-col items-center justify-center h-[50vh]">
+        <div id="main-container" class="flex flex-col items-center justify-center gap-20">
             <button
-                class="flex w-fit justify-center bg-blue-700 p-2 rounded-2xl hover:shadow-2xl hover:cursor-pointer" id="play-button">
-                Click Me
+                class="pixelify-sans flex w-fit text-8xl justify-center bg-blue-700 p-2 rounded-2xl hover:shadow-2xl hover:cursor-pointer" id="play-button">
+                START
             </button>
+        </div>
+        <div>
+            <img id="blue-dude" src="./src/images/Dude_Monster.png" class="w-[30vw] absolute top-7" alt="">
+            <img id="walking-boy-character" src="./src/images/char_walk_left.gif" class="w-[30vw] absolute top-7 right-0" alt="">
+            <img id="dragon" src="./src/images/Dragonredv2.gif" class="w-[25vw] absolute bottom-0 left-0 hidden" alt="">
         </div>
     </main>
     <footer></footer>
+    <div id="letter-explosion" class="explosion hidden"></div>
 </body>
 </html>
