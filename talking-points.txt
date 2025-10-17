@@ -14,7 +14,7 @@ Proposed solution (aiding towards a long term solution)
 
 > Providing learners with a easy to use and fun way to connect to more language education through tech.
 > It is a simple learning game that helps children 
-    - learn to recognize and connect letter sounds** 
+    - learn to recognize and connect letter sounds 
     - starting with IsiXhosa. (Based on current research?)
 > The app is designed to be direct to learner
     - giving clear instructions, playing letter sounds, and guiding them through each step.
@@ -40,12 +40,12 @@ Practical implications
 
 > This MVP is about connection through technology
     - connecting learners to education in their home language, to confidence, and to opportunity.
->
 > With expansion to other South African languages, this tool can become part of a larger mission:
     - making foundational literacy accessible, playful, and personal.
 > Learners across the country spending just a few extra minutes a day 
     - improving reading and comprehension skills in their own language, on any device.
 > The ultimate goal is connection and empowerment through data/research driven tech.
+
 Maybe the goal is actually to provide the research with an effective intervention platform?
 
 Future Improvements

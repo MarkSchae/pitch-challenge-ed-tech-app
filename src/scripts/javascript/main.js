@@ -1,19 +1,28 @@
 // Play the sound, internally stored example sound for now
-const letterSound = new Audio('../../src/audio/S.mp3'); 
+const letterSound = new Audio('../../src/audio/s-only.m4a'); 
 const explainSound = new Audio('../../src/audio/explain-xhosa.mp3');
 const explainSoundCont = new Audio('../../src/audio/explain-cont.mp3'); // Listen to the letter sounds carefully. Look at the letter on the screen
 // Click the letter that makes the sound (Cofa ileta eyenza isandi)
-const clickAnswer = new Audio('../../src/audio/click-answer.mp3');
+const clickAnswer = new Audio('../../src/audio/letter-s-game-screen.ogg');
 // Correct, well done! Kulungile, wenze kakuhle!
 const wellDoneSound = new Audio('../../src/audio/correct-well-done.mp3');
 // Keep trying, you are doing great! Qhubeka uzame, wenza kakuhle kakhulu!
-const keepTryingSound = new Audio('../../src/audio/keep-trying.mp3')
+const keepTryingSound = new Audio('../../src/audio/keep-trying.ogg');
+// Title screen ambient  
+const titleScreenMusicLoop = new Audio('../../src/audio/title-screen-background-music.mp3');
+// Game background music 
+const gameLoopMusic = new Audio('../../src/audio/game-loop-music.ogg');
+// Explosion sound
+const letterExplosion = new Audio('../../src/audio/letter-explosion.ogg')
 
 // Onclick event listner to load the explain game elements
 const playBtn = document.getElementById('play-button');
 playBtn.addEventListener('click', () => {
     // Remove the click me button element
     playBtn.classList.add('hidden');
+    // Play title screen music
+    titleScreenMusicLoop.play();
+    titleScreenMusicLoop.volume = 0.2;
     // Run the timer function
     countDownTimerRender();
 });
@@ -34,7 +43,8 @@ function countDownTimerRender () {
 
 // Count-down timer function
 function countDownTimer (timer, finishFn) {
-    timer.classList.remove('hidden');
+    //timer.classList.remove('hidden');
+    //letter.innerText = '';
     // Get the innertext of the timer and count back in seconds
     let time = timer.innerText;
 
@@ -56,8 +66,9 @@ function explainGameRender () {
     // Display the letter, can just hardcode for now, going to have to create a helper fn for creating the div and styles
     const letter = document.createElement('div');
     const letterContainer = document.getElementById('main-container');
-    const letterStyles = 'flex items-center justify-center w-fit text-6xl';
+    const letterStyles = 'flex items-center justify-center w-fit text-[130px] orbitron text-white';
     letter.classList.add(...letterStyles.split(' '));
+    letter.classList.add('fixed', 'top-1/2', 'left-1/2');
     letter.id = 'letter-id';
     letter.innerText = 'S'; // Maybe add animation for the letter
     letterContainer.append(letter);
@@ -75,7 +86,9 @@ function explainGameRender () {
     explainSound.addEventListener('ended', () => {
         explainSoundCont.play();
         explainSoundCont.addEventListener('ended', () => {
-            letter.innerText = '';
+            
+            letter.classList.add('text-[800px]', 'transition-all', 'ease-in-out',
+                'duration-[4000ms]', 'z-[9999]', '-translate-x-1/2','-translate-y-1/2',);
             const timer = document.getElementById('count-down-timer-id');
             timer.innerText = 3;
             // Run the count down function after the explain sound
@@ -87,6 +100,19 @@ function explainGameRender () {
 }
 
 function gameLoop () {
+    // Calling the explosion where the user clicks (not sure what I want to do here yet but the explosion is working well)
+    document.body.addEventListener('mousedown', (event) => {
+        if(event.target !== letterPlayBtn) {
+            sprite.classList.remove('hidden');
+            const x = event.pageX;
+            const y = event.pageY;
+            playExplosion(x, y);
+        }
+    });
+    // Play the background music
+    titleScreenMusicLoop.pause();
+    gameLoopMusic.volume = 0.1;
+    gameLoopMusic.play();
     // Remove the sprites from the landing page
     const walkingBoy = document.getElementById('walking-boy-character');
     walkingBoy.classList.add('hidden');
@@ -102,7 +128,9 @@ function gameLoop () {
     dragon.classList.remove('hidden');
     // The logic for the game loop 
     const letters = document.getElementById('letter-id');
-    //letters.innerText = 'X S B';
+    letters.innerText = '';
+    letters.className = '';
+    letters.className = 'flex items-center justify-center w-fit text-6xl';
     const optionOne = document.createElement('div');
     optionOne.innerText = 'B';
     const optionTwo = document.createElement('div');
@@ -111,10 +139,13 @@ function gameLoop () {
     optionThree.innerText = 'X';
     letters.append(optionOne, optionTwo, optionThree);
     letters.classList.add('justify-evenly', 'w-full');
-    letters.querySelectorAll('*').forEach(letter => letter.classList.add('hover:bg-amber-600', 'cursor-pointer')); 
+    const answerLetters = letters.querySelectorAll('*');
+    console.log(answerLetters);
+    letterShadow(answerLetters);
+    letters.querySelectorAll('*').forEach(letter => letter.classList.add('cursor-pointer', 'pixelify-sans', 'text-9xl', 'hover:text-[400px]', 'transition-all', 'duration-500', 'ease-in-out')); 
 /*   const choose = document.getElementById('text-div-id');
     choose.classList.remove('hidden'); */
-    //choose.innerText = 'Choose the letter that makes the sound'; // Play the sound again?
+    //choose.innerText = 'Choose the letter that makes the sound'; // Play the sound again?   
     clickAnswer.play();
     clickAnswer.addEventListener('ended', () => {
         letterSound.play();
@@ -135,22 +166,23 @@ function gameLoop () {
         }
     });
     // Run the function that checks for clicks/answer with the letters as a argument
-    letterClick(letters);
+    letterClick(letters, letterPlayBtn);
 }
 
 // Click event listeners on the letters
-function letterClick (lettersContainer) {
+function letterClick (lettersContainer, letterButton) {
     const letters = lettersContainer.querySelectorAll('*');
-    letters.forEach(letter => letter.addEventListener('click', () => {
+    letters.forEach(letter => letter.addEventListener('mousedown', () => {
         if(letter.innerText === 'S') {
+            letterButton.classList.add('hidden');
             const dragon = document.getElementById('dragon');
             dragon.classList.add('hidden');
             wellDoneSound.play();
             lettersContainer.innerText = '';
-            const coolCatGif = document.createElement('img');
-            coolCatGif.src = '../../src/images/wink.gif';
-            coolCatGif.classList.add('w-[30vw]', 'absolute', 'top-7');
-            lettersContainer.append(coolCatGif);
+            const greenManDance = document.createElement('img');
+            greenManDance.src = '../../src/images/green-dance.gif';
+            greenManDance.classList.add('w-[30vw]', 'absolute', 'top-7');
+            lettersContainer.append(greenManDance);
         } else {keepTryingSound.play();}
     }));
 }
@@ -175,13 +207,6 @@ const startBtn = document.querySelectorAll('#play-button');
 letterShadow(titles); 
 letterShadow(startBtn);
 
-// Calling the explosion where the user clicks (not sure what I want to do here yet but the explosion is working well)
-document.body.addEventListener('click', (event) => {
-    sprite.classList.remove('hidden');
-    const x = event.pageX;
-    const y = event.pageY;
-    playExplosion(x, y);
-});
 // Explosion of correct letter
 const sprite = document.getElementById('letter-explosion');
 const totalFrames = 11; // 0–10
@@ -191,6 +216,7 @@ const fps = 15; // 66.7ms per frame recommended by assest creator
 // Split the img(spritesheet) into seperate frames by a specific width,
 // Use the width and timing of the animation to move the frames(background) to the left creating the animation 
 function playExplosion(x, y) {
+    letterExplosion.play();
     let frame = 0;
 
     // Position the explosion
